@@ -1,16 +1,12 @@
--- Создание таблицы Categories для хранения категорий продуктов
 CREATE TABLE Categories (
     CategoryID INT PRIMARY KEY,
     CategoryName NVARCHAR(255) NOT NULL
 );
-
--- Создание таблицы Products для хранения информации о продуктах
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
     ProductName NVARCHAR(255) NOT NULL
 );
 
--- Создание связующей таблицы ProductCategory для связей между продуктами и категориями
 CREATE TABLE ProductCategory (
     ProductID INT,
     CategoryID INT,
@@ -18,7 +14,6 @@ CREATE TABLE ProductCategory (
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
--- Пример добавления данных
 INSERT INTO Categories (CategoryID, CategoryName)
 VALUES (1, 'Категория 1'),
        (2, 'Категория 2'),
@@ -36,7 +31,7 @@ VALUES (1, 1),
        (2, 2),
        (3, 3);
 
--- ОСНОВНОЙ ЗАПРОС
+-- TASK 2
 SELECT p.ProductName, c.CategoryName
 FROM Products p
 LEFT JOIN ProductCategory pc ON p.ProductID = pc.ProductID
